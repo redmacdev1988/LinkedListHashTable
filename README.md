@@ -1,6 +1,7 @@
 # LinkedListHashTable
-ref - https://en.wikipedia.org/wiki/Hash_table
-https://stackoverflow.com/questions/9214353/hash-table-runtime-complexity-insert-search-and-delete
+* https://en.wikipedia.org/wiki/Hash_table
+* https://stackoverflow.com/questions/9214353/hash-table-runtime-complexity-insert-search-and-delete
+
 
 Hash Table (separate chaining)
 
@@ -41,7 +42,7 @@ Once a hash table has passed its load balance - it has to rehash [create a new b
 
 In many situations, hash tables turn out to be on average more efficient than search trees or any other table lookup structure. For this reason, they are widely used in many kinds of computer software, particularly for associative arrays, database indexing, caches, and sets.
 
-#Issues
+# Issues
 
 However, we have to deal with hashing. Hashing is when two data inputs, after
 going through the hash algorithm function, will return you the same index.
