@@ -24,10 +24,10 @@ index = hash % array_size
 
 Therefore, the strength of a hash table is that insertion, deletion, and searching is O(1) time.
 
-Space		   Average O(n)[1]	  Worst case O(n)
-Search		 Average  O(1)	    Worst case O(n)
-Insert		 Average O(1)	    Worst case O(n)
-Delete		 Average O(1)	    Worst case O(n)
+- **Space**		   Average O(n)[1]	  Worst case O(n)<br />
+- **Search**		 Average  O(1)	    Worst case O(n)<br />
+- **Insert**		 Average O(1)	    Worst case O(n)<br />
+- **Delete**		 Average O(1)	    Worst case O(n)<br />
 
 The reason why worst case is O(n) is because all of your objects may be hashed
 to the exact same bucket say at index 3. Essentially, you just have a list
