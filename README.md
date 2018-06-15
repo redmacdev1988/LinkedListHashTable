@@ -87,6 +87,6 @@ When storing small keys and values, the **space overhead of the next pointer** i
 
 ## Separate Chaining with list head cells
 
-Some chaining implementations store the first record of each chain in the slot array itself.[4] The number of pointer traversals is decreased by one for most cases. The purpose is to increase cache efficiency of hash table access.
+Some chaining implementations store the first record of each chain in the slot array itself. The number of pointer traversals is decreased by one for most cases. The purpose is to increase cache efficiency of hash table access.
 
 The disadvantage is that an empty bucket takes the same space as a bucket with one entry. To save space, such hash tables often have about as many slots as stored entries, meaning that many slots have two or more entries
