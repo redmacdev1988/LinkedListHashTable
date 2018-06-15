@@ -20,13 +20,13 @@ index = f(key, array_size)
 Often this is done in two steps:
 
 `
-hash = hashfunc(key)\
+hash = hashfunc(key)  
 index = hash % array_size
 `
 
 Therefore, the strength of a hash table is that insertion, deletion, and searching is O(1) time.
 
-**Algorithm		Average	  Worst case**
+Algorithm		Average	  Worst case
 
 Space		    O(n)[1]	  O(n)
 Search		  O(1)	    O(n)
