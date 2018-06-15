@@ -13,15 +13,20 @@ from the hash, and then accessing the object at the array element.
 
 In other words, the idea of hashing is to distribute the entries (key/value pairs) across an array of buckets. Given a key, the algorithm computes an index that suggests where the entry can be found:
 
+`
 index = f(key, array_size)
+`
+
 Often this is done in two steps:
 
+`
 hash = hashfunc(key)
 index = hash % array_size
+`
 
 Therefore, the strength of a hash table is that insertion, deletion, and searching is O(1) time.
 
-Algorithm		Average	  Worst case
+**Algorithm		Average	  Worst case**
 
 Space		    O(n)[1]	  O(n)
 Search		  O(1)	    O(n)
@@ -38,11 +43,9 @@ In other words, hash tables suffer from O(n) worst time complexity due to two re
 If too many elements were hashed into the same key: looking inside this key may take O(n) time.
 Once a hash table has passed its load balance - it has to rehash [create a new bigger table, and re-insert each element to the table].
 
-
-
 In many situations, hash tables turn out to be on average more efficient than search trees or any other table lookup structure. For this reason, they are widely used in many kinds of computer software, particularly for associative arrays, database indexing, caches, and sets.
 
-# Issues
+## Issues
 
 However, we have to deal with hashing. Hashing is when two data inputs, after
 going through the hash algorithm function, will return you the same index.
@@ -52,22 +55,24 @@ Hash collisions are practically unavoidable when hashing a random subset of a la
 
 Therefore, almost all hash table implementations have some collision resolution strategy to handle such events.
 
-# Separate chaining
+## Separate chaining
 
 In the method known as separate chaining, each bucket is independent, and has some sort of list of entries with the same index. The time for hash table operations is the time to find the bucket (which is constant) plus the time for the list operation.
 
 In a good hash table, each bucket has zero or one entries, and sometimes two or three, but rarely more than that. Therefore, structures that are efficient in time and space for these cases are preferred. Structures that are efficient for a fairly large number of entries per bucket are not needed or desirable. If these cases happen often, the hashing function needs to be fixed.
 
-# Using linked list such as Queue or Stack
+## Using linked list such as Queue or Stack
 
-Chained hash tables with linked lists are popular because they require only basic data structures with simple algorithms, and can use simple hash functions that are unsuitable for other methods.[citation needed]
+Chained hash tables with linked lists are popular because they require only basic data structures with simple algorithms, and can use simple hash functions that are unsuitable for other methods.
 
 The cost of a table operation is that of scanning the entries of the selected bucket for the desired key. If the distribution of keys is sufficiently uniform, the average cost of a lookup depends only on the average number of keys per bucket—that is, it is roughly proportional to the load factor.
 
 For this reason, chained hash tables remain effective even when the number of table entries n is much higher than the number of slots. For example, a chained hash table with 1000 slots and 10,000 stored keys (load factor 10) is five to ten times slower than a 10,000-slot table (load factor 1); but still 1000 times faster than a plain sequential list.
 
-For separate-chaining, the worst-case scenario is when all entries are inserted into the same bucket, in which case the hash table is ineffective and the cost is that of searching the bucket data structure. If the latter is a linear list, the lookup procedure may have to scan all its entries, so the worst-case cost is proportional to the number n of entries in the table.
+For separate-chaining, **the worst-case scenario** is when all entries are inserted into the same bucket, in which case the hash table is ineffective and the cost is that of searching the bucket data structure. If the latter is a linear list, the lookup procedure may have to scan all its entries, so the worst-case cost is proportional to the number n of entries in the table.
 
-The bucket chains are often searched sequentially using the order the entries were added to the bucket. If the load factor is large and some keys are more likely to come up than others, then rearranging the chain with a move-to-front heuristic may be effective. More sophisticated data structures, such as balanced search trees, are worth considering only if the load factor is large (about 10 or more), or if the hash distribution is likely to be very non-uniform, or if one must guarantee good performance even in a worst-case scenario. However, using a larger table and/or a better hash function may be even more effective in those cases.[citation needed]
+The bucket chains are often searched sequentially using the order the entries were added to the bucket. If the load factor is large and some keys are more likely to come up than others, then rearranging the chain with a move-to-front heuristic may be effective.
+
+More sophisticated data structures, such as balanced search trees, are worth considering only if the load factor is large (about 10 or more), or if the hash distribution is likely to be very non-uniform, or if one must guarantee good performance even in a worst-case scenario. However, using a larger table and/or a better hash function may be even more effective in those cases.[citation needed]
 
 Chained hash tables also inherit the disadvantages of linked lists. When storing small keys and values, the space overhead of the next pointer in each entry record can be significant. An additional disadvantage is that traversing a linked list has poor cache performance, making the processor cache ineffective.
