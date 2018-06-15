@@ -20,7 +20,7 @@ index = f(key, array_size)
 Often this is done in two steps:
 
 `
-hash = hashfunc(key)
+hash = hashfunc(key)\
 index = hash % array_size
 `
 
