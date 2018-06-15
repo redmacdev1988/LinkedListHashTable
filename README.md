@@ -41,7 +41,17 @@ insert something, you traverse the list. In order to delete/search something, yo
 In other words, hash tables suffer from O(n) worst time complexity due to two reasons:
 
 If too many elements were hashed into the same key: looking inside this key may take O(n) time.
-Once a hash table has passed its load balance - it has to rehash [create a new bigger table, and re-insert each element to the table].
+
+**load balance (load factor)**
+
+load = n / k,
+
+**n** is number of entires OCCUPIED in the hash table.
+**k** is the number of buckets.
+
+So in an array, if there are 13 buckets, and after inserting some entries, 8 buckets are occupied, then we have load balance of 8 / 13, or 61.5%.
+
+Say we set a load balance of 80%. Once a hash table has passed its load balance - it has to rehash [create a new bigger table, and re-insert each element to the table].
 
 In many situations, hash tables turn out to be on average more efficient than search trees or any other table lookup structure. For this reason, they are widely used in many kinds of computer software, particularly for associative arrays, database indexing, caches, and sets.
 
