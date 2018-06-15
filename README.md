@@ -24,12 +24,10 @@ index = hash % array_size
 
 Therefore, the strength of a hash table is that insertion, deletion, and searching is O(1) time.
 
-Algorithm		Average	  Worst case
-
-Space		    O(n)[1]	  O(n)
-Search		  O(1)	    O(n)
-Insert		  O(1)	    O(n)
-Delete		  O(1)	    O(n)
+Space		   Average O(n)[1]	  Worst case O(n)
+Search		 Average  O(1)	    Worst case O(n)
+Insert		 Average O(1)	    Worst case O(n)
+Delete		 Average O(1)	    Worst case O(n)
 
 The reason why worst case is O(n) is because all of your objects may be hashed
 to the exact same bucket say at index 3. Essentially, you just have a list
@@ -55,7 +53,7 @@ In many situations, hash tables turn out to be on average more efficient than se
 
 ## Issues
 
-However, we have to deal with hashing. Hashing is when two data inputs, after
+However, we have to deal with collision. Collision is when two data inputs, after
 going through the hash algorithm function, will return you the same index.
 Thus, we have a collision at the element given by the index.
 
@@ -81,6 +79,14 @@ For separate-chaining, **the worst-case scenario** is when all entries are inser
 
 The bucket chains are often searched sequentially using the order the entries were added to the bucket. If the load factor is large and some keys are more likely to come up than others, then rearranging the chain with a move-to-front heuristic may be effective.
 
-More sophisticated data structures, such as balanced search trees, are worth considering only if the load factor is large (about 10 or more), or if the hash distribution is likely to be very non-uniform, or if one must guarantee good performance even in a worst-case scenario. However, using a larger table and/or a better hash function may be even more effective in those cases.[citation needed]
+More sophisticated data structures, such as balanced search trees, are worth considering only if the load factor is large (about 10 or more), or if the hash distribution is likely to be very non-uniform, or if one must guarantee good performance even in a worst-case scenario. However, using a larger table and/or a better hash function may be even more effective in those cases.
 
-Chained hash tables also inherit the disadvantages of linked lists. When storing small keys and values, the space overhead of the next pointer in each entry record can be significant. An additional disadvantage is that traversing a linked list has poor cache performance, making the processor cache ineffective.
+## Chained hash tables also inherit the disadvantages of linked lists.
+
+When storing small keys and values, the **space overhead of the next pointer** in each entry record can be significant. In other words, they use more memory than arrays because of the storage used by their pointers. An additional disadvantage is that traversing a linked list has poor cache performance, **making the processor cache ineffective**. This means that nodes are stored incontiguously, greatly increasing the time required to access individual elements within the list, especially with a CPU cache.
+
+## Separate Chaining with list head cells
+
+Some chaining implementations store the first record of each chain in the slot array itself.[4] The number of pointer traversals is decreased by one for most cases. The purpose is to increase cache efficiency of hash table access.
+
+The disadvantage is that an empty bucket takes the same space as a bucket with one entry. To save space, such hash tables often have about as many slots as stored entries, meaning that many slots have two or more entries
